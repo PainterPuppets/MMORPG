@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:77777fb224a8aafca311e51abe58e6a15c8065cfd81fbd49d8fb4962012f2b8f
-size 538
+﻿using UnityEngine;
+
+
+public abstract class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
+{
+    public bool global = true;
+    static T instance;
+    public static T Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance =(T)FindObjectOfType<T>();
+            }
+            return instance;
+        }
+
+    }
+
+    void Start()
+    {
+        if (global) DontDestroyOnLoad(this.gameObject);
+        this.OnStart();
+    }
+
+    protected virtual void OnStart()
+    {
+
+    }
+}

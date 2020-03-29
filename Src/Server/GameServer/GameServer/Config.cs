@@ -1,3 +1,41 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:408d1c7c26426d5df8b52a30edb3a6c5398d50f0b80e23f4cb5e6350f23e67c6
-size 1199
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Newtonsoft.Json;
+using System.IO;
+
+namespace GameServer
+{
+    class Config
+    {
+        class ConfigData
+        {
+            public string ServerIP { get; set; }
+            public int ServerPort { get; set; }
+
+            public string DBServerIP { get; set; }
+            public int DBServerPort { get; set; }
+            public string DBUser { get; set; }
+            public string DBPass { get; set; }
+        }
+
+        static ConfigData conig;
+
+        public static string ServerIP { get { return conig.ServerIP; } }
+        public static int ServerPort { get { return conig.ServerPort; } }
+
+        public static string DBServerIP { get { return conig.DBServerIP; } }
+        public static int DBServerPort { get { return conig.DBServerPort; } }
+        public static string DBUser { get { return conig.DBUser; } }
+        public static string DBPass { get { return conig.DBPass; } }
+
+
+        public static void LoadConfig(string filename)
+        {
+            string json = File.ReadAllText(filename);
+            conig = JsonConvert.DeserializeObject<ConfigData>(json);
+        }
+
+    }
+}

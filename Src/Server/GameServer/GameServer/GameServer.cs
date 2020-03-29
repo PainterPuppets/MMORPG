@@ -1,3 +1,51 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb3213f07e6261710182257dbdd052a609ce7e71ec96850ca0afc45f16d2e159
-size 1068
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+using System.Net.Sockets;
+using System.Configuration;
+
+using System.Threading;
+
+using Network;
+using GameServer.Services;
+
+namespace GameServer
+{
+    class GameServer
+    {
+        Thread thread;
+        bool running = false;
+        public bool Init()
+        {
+            DBService.Instance.Init();
+            thread = new Thread(new ThreadStart(this.Update));
+            return true;
+        }
+
+        public void Start()
+        {
+            running = true;
+            thread.Start();
+        }
+
+
+        public void Stop()
+        {
+            running = false;
+            thread.Join();
+        }
+
+        public void Update()
+        {
+            while (running)
+            {
+                Time.Tick();
+                Thread.Sleep(100);
+                //Console.WriteLine("{0} {1} {2} {3} {4}", Time.deltaTime, Time.frameCount, Time.ticks, Time.time, Time.realtimeSinceStartup);
+            }
+        }
+    }
+}

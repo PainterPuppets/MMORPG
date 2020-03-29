@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e04bdd816dec67dc22230ce6ae28980bfc89ff476e4576f28e9198efc65f4122
-size 966
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using SkillBridge.Message;
+using ProtoBuf;
+using System.IO;
+using Common;
+using System.Threading;
+using log4net.Repository;
+using log4net;
+
+namespace GameServer
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            FileInfo fi = new System.IO.FileInfo("log4net.xml");
+            ILoggerRepository repository = LogManager.CreateRepository("default");
+            log4net.Config.XmlConfigurator.ConfigureAndWatch(repository, fi);
+            Log.Init("GameServer");
+            Log.Info("Game Server Init");
+
+            GameServer server = new GameServer();
+            server.Init();
+            server.Start();
+            Console.WriteLine("Game Server Running......");
+            CommandHelper.Run();
+            Log.Info("Game Server Exiting...");
+            server.Stop();
+            Log.Info("Game Server Exited");
+        }
+    }
+}

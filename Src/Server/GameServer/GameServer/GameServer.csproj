@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:59b8f3fe5f804d27b3fb7937b25a15bd2080fcce20cb1315e8c553168255f1ca
-size 448
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="2.0.8" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="protobuf-net" Version="2.4.4" />
+  </ItemGroup>
+</Project>

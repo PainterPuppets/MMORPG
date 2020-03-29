@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:88cfb41d2462dc5f09e98919ec89be063c057a3fb6a5833c5bcd915c2b097dd2
-size 535
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using SkillBridge.Message;
+
+namespace Common.Data
+{
+    public class SpawnRuleDefine
+    {
+        public int ID { get; set; }
+        public int MapID { get; set; }
+        public int SpawnMonID { get; set; }
+        public int SpawnLevel{ get;set; }
+        public SPAWN_TYPE SpawnType { get; set; }
+        public int SpawnPoint { get; set; }
+        public int SpawnPoints { get; set; }
+        public float SpawnPeriod { get; set; }
+    }
+}

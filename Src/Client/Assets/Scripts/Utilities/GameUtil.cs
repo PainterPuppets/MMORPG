@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8f83e68f16dc2bdc9447075d2110ef62b32d853953896bd66085bcabfb16ba63
-size 288
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using UnityEngine;
+
+
+class GameUtil : Singleton<GameUtil>
+{
+    public bool InScreen(Vector3 position)
+    {
+        return Screen.safeArea.Contains(Camera.main.WorldToScreenPoint(position));
+    }
+}

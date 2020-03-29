@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d980ac85fff1103fa3a762ba10d17e1a8a4ac65f0139c610f979055f8e13f724
-size 484
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using SkillBridge.Message;
+
+namespace Common.Data
+{
+    public class TeleporterDefine
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public int MapID { get; set;}
+        public int LinkTo { get; set; }
+        public string Descript { get; set; }
+        public NVector3 Position { get; set; }
+        public NVector3 Direction { get; set; }
+    }
+}

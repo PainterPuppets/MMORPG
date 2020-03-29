@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e0f88e5c1830648a2de3909f875dd48d18c7f191b7214be73551617508c67319
-size 822
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GameServer
+{
+    class CommandHelper
+    {
+        public static void Run()
+        {
+            bool run = true;
+            while (run)
+            {
+                Console.Write(">");
+                string line = Console.ReadLine();
+                switch (line.ToLower().Trim())
+                {
+                    case "exit":
+                        run = false;
+                        break;
+                    default:
+                        Help();
+                        break;
+                }
+            }
+        }
+
+        public static void Help()
+        {
+            Console.Write(@"
+Help:
+    exit    Exit Game Server
+    help    Show Help
+");
+        }
+    }
+}
